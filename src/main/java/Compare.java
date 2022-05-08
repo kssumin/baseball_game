@@ -47,5 +47,17 @@ public class Compare {
                 ball++;
         }
     }
+    //결과값 출력
+    public void result(){
+        if(strikeCount==3){
+            System.out.println(Message.STRIKE_OUT);
+            System.out.println(Message.SUCCESS);
+        }else if(strikeCount==0&&ball==0){
+            System.out.println(Message.BALLNET);
+        }else{
+            if(strikeCount!=0)System.out.print(strikeCount+Message.STRIKE);
+            if(ball!=0)System.out.print(ball+Message.BALL);
+        }System.out.println();
+    }
 
 }
