@@ -22,6 +22,11 @@ public class BaseballGame {
     }
 
     public boolean checkReplay(){
-
+        System.out.println(Message.ASK_REPLAY);
+        if(user.choiceRetry()==Message.RESTART){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
