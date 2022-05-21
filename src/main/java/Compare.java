@@ -7,8 +7,7 @@ public class Compare {
     protected boolean exit;
 
     public Compare() {
-        this.strikeCount = 0;
-        this.ball = 0;
+        initCompare();
     }
 
     protected boolean getExit() {
