@@ -15,7 +15,7 @@ public class BaseballGame {
             while(!compare.isNextPlay()){
                 user.userInit();
                 user.setUserNumber();
-                compare.compareNumber(computer.getComputerNumber(), user.getUserNumber());
+                compare.compareNumber(user.getUserNumber(), computer.getComputerNumber());
             }if(checkReplay())compare.initCompare();
             else{break;}
         }
