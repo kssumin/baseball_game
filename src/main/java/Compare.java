@@ -26,19 +26,19 @@ public class Compare {
         this.exit = false;
     }
 
-    public void compareNumber(ArrayList<Integer> userNumber, ArrayList<Integer> computerNumber) {
+    public void compareNumbers(ArrayList<Integer> userNumber, ArrayList<Integer> computerNumbers) {
         initScore();
         retry++;
-        for (int i = 0; i < Message.CIPHERS; i++) {
-            validateNumber(computerNumber, userNumber.get(i), i);
+        for (int i = 0; i < Message.LIMIT_NUMBERS_INDEX; i++) {
+            validateNumber(computerNumbers, userNumber.get(i), i);
         }
         result();
     }
 
     //strike,ball 계산
-    private void validateNumber(ArrayList<Integer> computerNumber, int userNum, int userNumberIndex) {
-        if (computerNumber.contains(userNum)) {
-            if (computerNumber.get(userNumberIndex) == userNum) {
+    private void validateNumber(ArrayList<Integer> computerNumbers, int userNumber, int userNumberIndex) {
+        if (computerNumbers.contains(userNumber)) {
+            if (computerNumbers.get(userNumberIndex) == userNumber) {
                 strikeCount++;
             } else
                 ball++;
@@ -47,11 +47,11 @@ public class Compare {
 
     //결과값 출력
     public void result() {
-        if (strikeCount == 3) {
+        if (strikeCount == Message.THREE_STRIKE) {
             System.out.println(Message.STRIKE_OUT);
             System.out.println(Message.SUCCESS);
         } else if (strikeCount == 0 && ball == 0) {
-            System.out.println(Message.BALLNET);
+            System.out.println(Message.FOUR_BALL);
         } else {
             if (strikeCount != 0) System.out.print(strikeCount + Message.STRIKE);
             if (ball != 0) System.out.print(ball + Message.BALL);
@@ -59,11 +59,10 @@ public class Compare {
         System.out.println();
     }
 
-    //사용자의 다음 입력을 받을지 결정
-    public boolean isNextPlay() {
-        if (strikeCount == 3) {
+    public boolean canNextPlay() {
+        if (strikeCount == Message.THREE_STRIKE) {
             exit = true;
-        } else if (retry == 9) {
+        } else if (retry == Message.LIMIT_NUMBER_OF_ATTEMPS) {
             exit = true;
         } else {
             exit = false;

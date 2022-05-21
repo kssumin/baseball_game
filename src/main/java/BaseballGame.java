@@ -11,19 +11,19 @@ public class BaseballGame {
 
     public void startGame() {
         while (true) {
-            computer.setComputerNumber();
-            while(!compare.isNextPlay()){
+            computer.setcomputerNumbers();
+            while(!compare.canNextPlay()){
                 user.userInit();
-                user.setUserNumber();
-                compare.compareNumber(user.getUserNumber(), computer.getComputerNumber());
-            }if(checkReplay())compare.initCompare();
+                user.setUserNumbers();
+                compare.compareNumbers(user.getUserNumbers(), computer.getcomputerNumbers());
+            }if(isNextGameSet())compare.initCompare();
             else{break;}
         }
     }
 
-    public boolean checkReplay(){
+    public boolean isNextGameSet(){
         System.out.println(Message.ASK_REPLAY);
-        if(user.choiceRetry()==Message.RESTART){
+        if(user.inputRestart()==Message.RESTART){
             return true;
         }else{
             return false;

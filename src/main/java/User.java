@@ -10,26 +10,26 @@ public class User {
         userNumber.clear();
     }
 
-    public ArrayList<Integer> getUserNumber() {
+    public ArrayList<Integer> getUserNumbers() {
         return userNumber;
     }
 
-    public void setUserNumber() {
+    public void setUserNumbers() {
         Scanner scanner = new Scanner(System.in);
-        int input=scanner.nextInt();
-        changeToArray(input);
+        int inputUserNumbers=scanner.nextInt();
+        changeToArray(inputUserNumbers);
     }
 
-    private void changeToArray(int input){
+    private void changeToArray(int inputUserNumbers){
         int i=0;
-        while(i<Message.CIPHERS){
-            userNumber.add(0,input % 10);
-            input/=10;
+        while(i<Message.LIMIT_NUMBERS_INDEX){
+            userNumber.add(0,inputUserNumbers % 10);
+            inputUserNumbers/=10;
             i++;
         }
     }
 
-    public int choiceRetry(){
+    public int inputRestart(){
         Scanner scanner=new Scanner(System.in);
         int whetherToRestart=scanner.nextInt();
         return whetherToRestart;
