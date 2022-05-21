@@ -6,26 +6,29 @@ public class BaseballGame {
     public BaseballGame() {
         this.computer = new Computer();
         this.user = new User();
-        this.compare=new Compare();
+        this.compare = new Compare();
     }
 
     public void startGame() {
         while (true) {
             computer.setcomputerNumbers();
-            while(!compare.canNextPlay()){
+            while (!compare.canNextPlay()) {
                 user.userInit();
                 user.setUserNumbers();
                 compare.compareNumbers(user.getUserNumbers(), computer.getcomputerNumbers());
-            }if(isNextGameSet())compare.initCompare();
-            else{break;}
+            }
+            if (isNextGameSet()) compare.initCompare();
+            else {
+                break;
+            }
         }
     }
 
-    public boolean isNextGameSet(){
+    public boolean isNextGameSet() {
         System.out.println(Message.ASK_REPLAY);
-        if(user.inputRestart()==Message.RESTART){
+        if (user.inputRestart() == Message.RESTART) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
