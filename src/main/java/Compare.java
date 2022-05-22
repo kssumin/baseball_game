@@ -1,73 +1,73 @@
+import View.OutputView;
+
 import java.util.ArrayList;
 
 public class Compare {
+    public static final int THREE_STRIKE = 3;
+    public static final int LIMIT_NUMBER_OF_ATTEMPS = 9;
+    public static final int GAME_NUMBER_LENGTH = 3;
+
     private int strikeCount;
-    private int ball;
+    private int ballCount;
     private int retry;
-    protected boolean exit;
+    private boolean exit;
 
     public Compare() {
         initCompare();
     }
 
-    protected boolean getExit() {
-        return exit;
-    }
-
     private void initScore() {
         this.strikeCount = 0;
-        this.ball = 0;
+        this.ballCount = 0;
     }
 
-    protected void initCompare() {
+    private void initCompare() {
         this.strikeCount = 0;
-        this.ball = 0;
+        this.ballCount = 0;
         this.retry = 0;
         this.exit = false;
     }
 
-    public void compareNumbers(ArrayList<Integer> userNumber, ArrayList<Integer> computerNumbers) {
+    public int getStrikeCount(){
+        return strikeCount;
+    }
+
+    private void incStrikeCount() {
+        strikeCount+=1;
+    }
+
+    private void incBallCount() {
+        ballCount+=1;
+    }
+
+    public void compare(ArrayList<Integer>userNumbers, ArrayList<Integer>computerNumber) {
         initScore();
         retry++;
-        for (int i = 0; i < Message.LIMIT_NUMBERS_INDEX; i++) {
-            validateNumber(computerNumbers, userNumber.get(i), i);
+        for (int i = 0; i < GAME_NUMBER_LENGTH; i++)
+        {
+            validateNumber(computerNumber,userNumbers.get(i),i);
         }
-        result();
+        OutputView.printScoreMessage(strikeCount,ballCount);
     }
 
-    //strike,ball 계산
-    private void validateNumber(ArrayList<Integer> computerNumbers, int userNumber, int userNumberIndex) {
-        if (computerNumbers.contains(userNumber)) {
-            if (computerNumbers.get(userNumberIndex) == userNumber) {
-                strikeCount++;
-            } else
-                ball++;
+    private void validateNumber(ArrayList<Integer>computerNumber,int userNum, int userNumbersIndex){
+        if(computerNumber.contains(userNum)){
+            if(computerNumber.get(userNumbersIndex)==userNum){
+                incStrikeCount();
+            }
+            else
+                incBallCount();
         }
-    }
-
-    //결과값 출력
-    public void result() {
-        if (strikeCount == Message.THREE_STRIKE) {
-            System.out.println(Message.STRIKE_OUT);
-            System.out.println(Message.SUCCESS);
-        } else if (strikeCount == 0 && ball == 0) {
-            System.out.println(Message.FOUR_BALL);
-        } else {
-            if (strikeCount != 0) System.out.print(strikeCount + Message.STRIKE);
-            if (ball != 0) System.out.print(ball + Message.BALL);
-        }
-        System.out.println();
     }
 
     public boolean canNextPlay() {
-        if (strikeCount == Message.THREE_STRIKE) {
+        if (strikeCount == THREE_STRIKE) {
             exit = true;
-        } else if (retry == Message.LIMIT_NUMBER_OF_ATTEMPS) {
+        } else if (retry == LIMIT_NUMBER_OF_ATTEMPS) {
             exit = true;
-        } else {
-            exit = false;
-        }
+        } else exit = false;
         return exit;
     }
 
 }
+

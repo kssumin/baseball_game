@@ -2,39 +2,33 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class User {
-    private ArrayList<Integer> userNumber;
+    public static final int LIMIT_NUMBERS_INDEX = 3;
+    private ArrayList<Integer> userNumbers;
 
     public User() {
-        userNumber = new ArrayList<Integer>();
+        userNumbers = new ArrayList<Integer>();
     }
 
-    public void userInit() {
-        userNumber.clear();
+    public void initUserNumbers() {
+        userNumbers.clear();
     }
 
     public ArrayList<Integer> getUserNumbers() {
-        return userNumber;
+        return userNumbers;
     }
 
     public void setUserNumbers() {
         Scanner scanner = new Scanner(System.in);
         int inputUserNumbers = scanner.nextInt();
-        changeToArray(inputUserNumbers);
+        toArray(inputUserNumbers);
     }
 
-    private void changeToArray(int inputUserNumbers) {
+    private void toArray(int inputUserNumbers) {
         int i = 0;
-        while (i < Message.LIMIT_NUMBERS_INDEX) {
-            userNumber.add(0, inputUserNumbers % 10);
+        while (i < LIMIT_NUMBERS_INDEX) {
+            userNumbers.add(0, inputUserNumbers % 10);
             inputUserNumbers /= 10;
             i++;
         }
     }
-
-    public int inputRestart() {
-        Scanner scanner = new Scanner(System.in);
-        int whetherToRestart = scanner.nextInt();
-        return whetherToRestart;
-    }
-
 }

@@ -1,20 +1,15 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
-
 public class Computer {
+    public static final int LIMIT_NUMBER_RANGE = 9;
     private ArrayList<Integer> computerNumbers;
 
-    //초기화
-    private void initcomputerNumbers() {
+    public void initComputerNumbers() {
         computerNumbers = new ArrayList<Integer>();
     }
 
-    //3자리 숫자 생성
-    protected void setcomputerNumbers() {
-
-        initcomputerNumbers();
+    public void setComputerNumbers() {
         while (computerNumbers.size() < 3) {
             int tmp = createRandomNumber();
             if (!isUniqueNumber(tmp)) {
@@ -23,23 +18,21 @@ public class Computer {
         }
     }
 
-    public ArrayList<Integer> getcomputerNumbers() {
+    public ArrayList<Integer> getComputerNumbers() {
+        System.out.println(computerNumbers);
         return computerNumbers;
     }
 
-    //중복 아닌지 확인
     private boolean isUniqueNumber(int randomNum) {
         boolean isUnique;
         isUnique = computerNumbers.contains(randomNum);
         return isUnique;
     }
 
-
-    //각 숫자 랜덤으로 생성
     private int createRandomNumber() {
         int randomNum;
         Random random = new Random();
-        randomNum = random.nextInt(Message.LIMIT_NUMBER_RANGE) + 1;
+        randomNum = random.nextInt(LIMIT_NUMBER_RANGE) + 1;
         return randomNum;
     }
 }
