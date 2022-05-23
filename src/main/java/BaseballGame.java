@@ -4,16 +4,15 @@ import View.OutputView;
 public class BaseballGame {
     public static final int RESTART = 1;
 
-    private Computer computer;
-    private User user;
+    private final Computer computer;
     private Compare compare;
-    private boolean newGameSet;
+    private User user;
 
-    public BaseballGame() {
-        this.computer = new Computer();
-        this.user = new User();
-        this.compare = new Compare();
-        this.newGameSet=true;
+    public BaseballGame(Computer computer, Compare compare, User user) {
+        this.computer = computer;
+        this.compare = compare;
+        this.user = user;
+
     }
 
     public void runGame() {
@@ -21,17 +20,15 @@ public class BaseballGame {
             setGame();
             startGame();
             endGame();
-        }while(askRetry());
+        } while (askRetry());
     }
 
     private void setGame() {
-        computer.initComputerNumbers();
-        computer.setComputerNumbers();
+        computer.setComputerNumbers();//컴퓨터 숫자가 새로 생성이 된다,.
     }
 
-    private void startGame() { //playGame
+    private void startGame() {
         while (!compare.canNextPlay()) {
-            user.initUserNumbers();
             OutputView.printInputBallMessage();
             user.setUserNumbers();
             compare.compare(user.getUserNumbers(), computer.getComputerNumbers());
@@ -39,18 +36,11 @@ public class BaseballGame {
     }
 
     private void endGame() {
-        if(compare.getStrikeCount()==3){
-            OutputView.printGameSuccessMessage();
-        }else{
-            OutputView.printGameFailMessage();
-        }
+        compare.isEndGame();
     }
 
     private boolean askRetry() {
         OutputView.printAskReplayMessage();
-        if (InputView.inputRestart() == RESTART) {
-            newGameSet=true;
-        }else newGameSet = false;
-        return newGameSet;
+        return InputView.inputRestart() == RESTART; //1입력이 되면 true 반환
     }
 }

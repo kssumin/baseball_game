@@ -8,4 +8,10 @@ public class InputView {
         int whetherToRestart = scanner.nextInt();
         return whetherToRestart;
     }
+
+    public static int inputNumbers(){
+        Scanner scanner = new Scanner(System.in);
+        int inputUserNumbers = scanner.nextInt();
+        return inputUserNumbers;
+    }
 }

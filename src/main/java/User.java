@@ -1,31 +1,24 @@
+import View.InputView;
+
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class User {
-    public static final int LIMIT_NUMBERS_INDEX = 3;
-    private ArrayList<Integer> userNumbers;
+    private List<Integer> userNumbers;
 
-    public User() {
-        userNumbers = new ArrayList<Integer>();
-    }
-
-    public void initUserNumbers() {
-        userNumbers.clear();
-    }
-
-    public ArrayList<Integer> getUserNumbers() {
+    public List<Integer> getUserNumbers() {
         return userNumbers;
     }
 
     public void setUserNumbers() {
-        Scanner scanner = new Scanner(System.in);
-        int inputUserNumbers = scanner.nextInt();
-        toArray(inputUserNumbers);
+        userNumbers = new ArrayList<Integer>();
+        toArray(InputView.inputNumbers());
     }
 
     private void toArray(int inputUserNumbers) {
         int i = 0;
-        while (i < LIMIT_NUMBERS_INDEX) {
+        while (i < Constant.BALL_LENGTH) {
             userNumbers.add(0, inputUserNumbers % 10);
             inputUserNumbers /= 10;
             i++;

@@ -1,6 +1,7 @@
 public class Application {
     public static void main(String[] args) {
-        BaseballGame baseballGame = new BaseballGame();
+        Config config = new Config();
+        BaseballGame baseballGame = config.baseballGame();
         baseballGame.runGame();
     }
 }
