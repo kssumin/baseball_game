@@ -17,8 +17,6 @@ public class BaseballGame {
     public void runGame() {
         do {
             setComputer();
-            System.out.println(computer.getComputerNumbers());
-
             startGame();
             endGame();
         } while (askRetry());
