@@ -1,5 +1,3 @@
-import java.util.List;
-
 public class Config {
 
     public Compare compare(){
@@ -21,4 +19,5 @@ public class Config {
     public User user(){
         return new User();
     }
+
 }

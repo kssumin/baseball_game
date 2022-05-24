@@ -2,7 +2,6 @@ import View.InputView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class User {
     private List<Integer> userNumbers;
@@ -12,7 +11,7 @@ public class User {
     }
 
     public void setUserNumbers() {
-        userNumbers = new ArrayList<Integer>();
+        userNumbers = new ArrayList<>();
         toArray(InputView.inputNumbers());
     }
 

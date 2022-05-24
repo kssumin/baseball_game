@@ -5,34 +5,39 @@ public class BaseballGame {
     public static final int RESTART = 1;
 
     private final Computer computer;
-    private Compare compare;
-    private User user;
+    private final Compare compare;
+    private final User user;
 
     public BaseballGame(Computer computer, Compare compare, User user) {
         this.computer = computer;
         this.compare = compare;
         this.user = user;
-
     }
 
     public void runGame() {
         do {
-            setGame();
+            setComputer();
+            System.out.println(computer.getComputerNumbers());
+
             startGame();
             endGame();
         } while (askRetry());
     }
 
-    private void setGame() {
-        computer.setComputerNumbers();//컴퓨터 숫자가 새로 생성이 된다,.
+    private void setComputer() {
+        computer.setComputerNumbers();
     }
 
     private void startGame() {
-        while (!compare.canNextPlay()) {
-            OutputView.printInputBallMessage();
-            user.setUserNumbers();
+        while (compare.canNextPlay()) {
+            setUser();
             compare.compare(user.getUserNumbers(), computer.getComputerNumbers());
         }
+    }
+
+    private void setUser() {
+        OutputView.printInputBallMessage();
+        user.setUserNumbers();
     }
 
     private void endGame() {
@@ -41,6 +46,6 @@ public class BaseballGame {
 
     private boolean askRetry() {
         OutputView.printAskReplayMessage();
-        return InputView.inputRestart() == RESTART; //1입력이 되면 true 반환
+        return InputView.inputRestart() == RESTART;
     }
 }

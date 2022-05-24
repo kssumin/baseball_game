@@ -6,8 +6,8 @@
     -   각 자릿수 중복 체크 isUnique 메서드
 
 사용자 입력 User 클래스
--  사용자 숫자 입력 setUserNumber 메서드
--  사용자 입력을 배열로 바꾸는 changeToArray 메서드
+-  사용자 숫자 입력 setuserNumbers 메서드
+-  사용자 입력을 배열로 바꾸는 toArray 메서드
 -  다음판 실행 여부 입력받는 메서드
 
 컴퓨터 정답값과 사용자 입력값 비교하는 Compare 클래스

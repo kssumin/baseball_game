@@ -3,7 +3,8 @@ import java.util.List;
 import java.util.Random;
 
 public class Computer {
-    public static final int LIMIT_NUMBER_RANGE = 9;
+    public static final int MAX_NUMBER_RANGE = 9;
+    public static final int MIN_NUMBER_RANGE = 1;
     private List<Integer> computerNumbers;
 
 
@@ -18,7 +19,6 @@ public class Computer {
     }
 
     public List<Integer> getComputerNumbers() {
-        System.out.println(computerNumbers);
         return computerNumbers;
     }
 
@@ -31,7 +31,7 @@ public class Computer {
     private int createRandomNumber() {
         int randomNum;
         Random random = new Random();
-        randomNum = random.nextInt(LIMIT_NUMBER_RANGE) + 1;
+        randomNum = random.nextInt(MAX_NUMBER_RANGE) + MIN_NUMBER_RANGE;
         return randomNum;
     }
 }
