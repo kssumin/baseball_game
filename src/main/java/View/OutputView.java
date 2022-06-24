@@ -17,8 +17,12 @@ public class OutputView {
         } else if (strikeCount == 0 && ballCount == 0) {
             System.out.println(FOUR_BALL);
         } else {
-            if (strikeCount != 0) System.out.print(strikeCount + STRIKE);
-            if (ballCount != 0) System.out.print(ballCount + BALL);
+            if (strikeCount != 0){
+                System.out.print(strikeCount + STRIKE);
+            }
+            if (ballCount != 0){
+                System.out.print(ballCount + BALL);
+            }
             System.out.println();
         }
     }
