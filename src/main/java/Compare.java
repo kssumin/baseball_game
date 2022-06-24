@@ -16,7 +16,7 @@ public class Compare {
 
     public void compare(List<Integer> userNumbers, List<Integer> computerNumber) {
         ball.initStrikeAndBallCount();
-        ball.incRetryCount();
+        ball.increaseRetryCount();
         for (int i = 0; i < Constant.BALL_LENGTH; i++) {
             validateNumber(computerNumber, userNumbers.get(i), i);
         }
@@ -26,9 +26,9 @@ public class Compare {
     private void validateNumber(List<Integer> computerNumbers, int userNum, int userNumberIndex) {
         if (computerNumbers.contains(userNum)) {
             if (computerNumbers.get(userNumberIndex) == userNum) {
-                ball.incStrikeCount();
+                ball.increaseStrikeCount();
             } else
-                ball.incBallCount();
+                ball.increaseBallCount();
         }
     }
 

@@ -14,7 +14,7 @@ public class Ball {
         this.ballCount = 0;
     }
 
-    public void incRetryCount() {
+    public void increaseRetryCount() {
         retry += 1;
     }
 
@@ -34,11 +34,11 @@ public class Ball {
         return ballCount;
     }
 
-    public void incStrikeCount() {
+    public void increaseStrikeCount() {
         strikeCount += 1;
     }
 
-    public void incBallCount() {
+    public void increaseBallCount() {
         ballCount += 1;
     }
 }
