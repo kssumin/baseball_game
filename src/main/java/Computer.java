@@ -11,9 +11,9 @@ public class Computer {
     public void setComputerNumbers() {
         computerNumbers = new ArrayList<>();
         while (computerNumbers.size() < Constant.BALL_LENGTH) {
-            int tmp = createRandomNumber();
-            if (!isUniqueNumber(tmp)) {
-                computerNumbers.add(tmp);
+            int candidateNumber = createRandomNumber();
+            if (isContainNumber(candidateNumber)) {
+                computerNumbers.add(candidateNumber);
             }
         }
     }
@@ -22,9 +22,9 @@ public class Computer {
         return computerNumbers;
     }
 
-    private boolean isUniqueNumber(int randomNum) {
+    private boolean isContainNumber(int randomNumber) {
         boolean isUnique;
-        isUnique = computerNumbers.contains(randomNum);
+        isUnique = !(computerNumbers.contains(randomNumber));
         return isUnique;
     }
 
