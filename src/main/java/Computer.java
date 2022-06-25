@@ -7,9 +7,11 @@ public class Computer {
     public static final int MIN_NUMBER_RANGE = 1;
     private List<Integer> computerNumbers;
 
-
+    public Computer(){
+        computerNumbers=new ArrayList<>();
+    }
+    
     public void setComputerNumbers() {
-        computerNumbers = new ArrayList<>();
         while (computerNumbers.size() < Constant.BALL_LENGTH) {
             int candidateNumber = createRandomNumber();
             if (isContainNumber(candidateNumber)) {
